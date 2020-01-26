@@ -4,49 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieRatingActivity">
+    android:background="@color/colorBackgroundBlue"
+    tools:context=".MovieReviewActivity">
 
     <TextView
-        android:id="@+id/rating_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RatingBar
-        android:id="@+id/rating_ratingbar"
+        android:id="@+id/header_movie_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Inception" />
+
+    <RatingBar
+        android:id="@+id/ratingbar_movie_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:numStars="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating_title" />
+        app:layout_constraintTop_toBottomOf="@+id/header_movie_review" />
 
     <EditText
-        android:id="@+id/rating_feedback"
-        android:layout_width="wrap_content"
+        android:id="@+id/text_movie_review"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:gravity="start|top"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating_ratingbar" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingbar_movie_review"
+        tools:text="Sample Review" />
 
     <Button
-        android:id="@+id/rating_button"
+        android:id="@+id/button_movie_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="RATE THIS MOVIE"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Rate Movie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating_feedback" />
+        app:layout_constraintTop_toBottomOf="@+id/text_movie_review" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

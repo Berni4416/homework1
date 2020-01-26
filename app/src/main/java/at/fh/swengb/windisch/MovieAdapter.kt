@@ -4,46 +4,49 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.movie_item.view.*
 import kotlinx.android.synthetic.main.movie_item.view.*
 
 class MovieAdapter(val clickListener: (movie: Movie) -> Unit): RecyclerView.Adapter<MovieViewHolder>(){
 
-    private var listofMovie = listOf<Movie>()
+    private var movieList = listOf<Movie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): MovieViewHolder {
-        val layoutinflater = LayoutInflater.from(parent.context)
-        val movieItemView = layoutinflater.inflate(R.layout.movie_item, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val movieItemView = inflater.inflate(R.layout.movie_item, parent, false)
         return MovieViewHolder(movieItemView, clickListener)
     }
 
     override fun getItemCount(): Int {
-        return listofMovie.size
+        return movieList.size
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        var movie = listofMovie[position]
+        var movie = movieList[position]
         holder.bindItem(movie)
     }
 
     fun updateList(newList: List<Movie>) {
-        listofMovie = newList
+        movieList = newList
         notifyDataSetChanged()
     }
 
 }
 
+
 class MovieViewHolder(itemView: View, val clickListener: (movie: Movie) -> Unit): RecyclerView.ViewHolder(itemView){
     fun bindItem(movie: Movie){
 
 
-        itemView.item_name.text = movie.title
-        itemView.item_release_date.text = movie.release
-        itemView.item_actor_1.text = movie.actors[0]?.name
-        itemView.item_actor_2.text = movie.actors[1]?.name
+        //Output content for one movie item
+        itemView.title_movie_item.text = movie.title
+        Glide
+            .with(itemView)
+            .load(movie.imagePoster)
+            .into(itemView.image_movie_item)
 
-        itemView.item_avg_rating_bar.rating = movie.ratingAverage().toFloat()
-        itemView.item_avg_rating_value.text = movie.ratingAverage().toString()
-        itemView.item_rating_count.text = movie.reviews.count().toString()
+
 
         itemView.setOnClickListener{
             clickListener(movie)

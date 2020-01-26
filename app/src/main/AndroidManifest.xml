@@ -9,10 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MovieRating"></activity>
-        <activity android:name=".MovieDetail" />
-        <activity android:name=".MovieList" />
-        <activity android:name=".MainActivity">
+
+        <!-- Implementing Up navigation, with launchmode-->
+        <activity
+            android:name=".MovieReviewActivity"
+            android:parentActivityName=".MovieDetailActivity"/>
+
+        <activity
+            android:name=".MovieDetailActivity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop"/>
+
+        <activity android:name=".MainActivity" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,5 +28,6 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
